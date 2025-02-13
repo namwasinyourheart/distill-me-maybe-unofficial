@@ -1,0 +1,22 @@
+exp_manager:
+  exp_name: "baseline"
+  seed: 20250213
+  wandb: 
+    project: 
+    log_artifact:
+
+prepare_data:
+  dataset:
+    is_prepared: false
+    dataset_name: go_emotions
+    is_dataset_dict: true
+    do_split: true
+    val_ratio: 0.25
+    test_ratio: 0.2
+    do_save: true
+    prepared_data_path: ./exps/baseline/data/baseline.pkl
+
+prepare_model:
+  pretrained_model_name_or_path: "bert-base-uncased"
+
+train:
