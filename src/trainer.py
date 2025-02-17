@@ -1,7 +1,15 @@
-from transformers import Trainer
+from transformers import Trainer, TrainingArguments
 import torch.nn.functional as F
 import torch.nn as nn
 import torch
+
+
+class DistillationTrainingArguments(TrainingArguments):
+    def __init__(self, *args, alpha=0.5, temperature=2.0, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        self.alpha = alpha
+        self.temperature = temperature
 
 class DistillationTrainer(Trainer):
     def __init__(self, *args, teacher_model=None, **kwargs):
