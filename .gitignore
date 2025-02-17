@@ -1,3 +1,17 @@
 .env
 
 __pycache__
+
+.gitignore
+
+plotting.py
+
+exps
+
+configs
+
+notebooks
+
+eval.py
+
+wandb
