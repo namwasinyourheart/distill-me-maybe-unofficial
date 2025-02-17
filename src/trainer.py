@@ -15,6 +15,7 @@ class DistillationTrainer(Trainer):
     def __init__(self, *args, teacher_model=None, **kwargs):
         super().__init__(*args, **kwargs)
         self.teacher = teacher_model
+        self._move_model_to_device(self.teacher, self.model.device)
         self.teacher.eval()
 
     def compute_loss(self, model, inputs, return_outputs=False):

@@ -9,7 +9,7 @@ from hydra import initialize, compose
 from hydra.utils import instantiate
 from omegaconf import OmegaConf
 
-from transformers import DataCollatorWithPadding
+from transformers import DataCollatorWithPadding, set_seed
 from src.utils.model_utils import load_tokenizer, load_model
 from src.trainer import DistillationTrainingArguments, DistillationTrainer
 
@@ -120,6 +120,9 @@ def main():
 
     # Show dataset examples
     show_dataset_examples(dataset)
+
+    # Set seed before initializing model.
+    set_seed(exp_args.seed)
 
 
     def get_data_subset(n_samples, dataset, seed):
