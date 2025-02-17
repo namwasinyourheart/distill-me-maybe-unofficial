@@ -214,7 +214,7 @@ def main():
 
         # Save model
         logger.info("SAVING MODEL...")
-        trainer.save_model()
+        trainer.save_model(exp_results_dir)
         logger.info("MODEL SAVED SUCCESSFULLY.")
 
 
@@ -248,14 +248,23 @@ def main():
                 fout.write(json.dumps(all_metrics))
 
 
-    # # Evaluate model
-    # logger.info("EVALUATING MODEL...")
-    # results = trainer.evaluate()
-    # logger.info(f"Evaluation Results: {results}")
-    
-    # # Save model
-    # trainer.save_model()
-    # logger.info("MODEL SAVED SUCCESSFULLY.")
+    # Log exp artifact
+    if exp_args.wandb.log_artifact == True:
+        logger.info("LOGGING EXP ARTIFACTS...")
+        # Create an artifact
+        artifact = wandb.Artifact(
+            name=exp_args.exp_name, 
+            type="exp", 
+            # description="Dummy dataset with CSV files"
+        )
+
+        # Add the directory to the artifact
+        artifact.add_dir(exp_dir)
+
+        wandb.log_artifact(artifact)
+
+    # Finish the W&B run
+    wandb.finish()
 
 if __name__ == '__main__':
     main()
