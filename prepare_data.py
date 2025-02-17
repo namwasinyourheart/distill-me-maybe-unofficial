@@ -12,7 +12,7 @@ from omegaconf import OmegaConf
 from transformers import AutoTokenizer
 
 from src.utils.exp_utils import create_exp_dir
-from src.utils.log_utils import init_logging, setup_logger
+from src.utils.log_utils import setup_logger
 
 
 def load_cfg(config_path, override_args=None, print_cfg=True):

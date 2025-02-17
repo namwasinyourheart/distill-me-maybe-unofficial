@@ -1,6 +1,6 @@
 import logging
 from colorama import Fore, Style, init
-
+from typing import Union
 # Initialize colorama
 init(autoreset=True)
 
