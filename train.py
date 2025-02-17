@@ -236,7 +236,7 @@ def main():
             test_dataset=test_ds,
             metric_key_prefix='test'
         )
-        trainer.save_predictions(predictions)
+        # trainer.save_predictions(predictions)
         metrics = predictions.metrics
         all_metrics.update(metrics)
 
