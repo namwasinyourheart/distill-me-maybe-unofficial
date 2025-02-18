@@ -123,7 +123,7 @@ def process_data(example, tokenizer, text_col, do_tokenize, padding, max_length)
 
         example['input_ids'] = tokenized_text['input_ids']
         example['attention_mask'] = tokenized_text['attention_mask']
-    return tokenized_text
+    return example
 
 def save_dataset(dataset, save_path):
     joblib.dump(dataset, save_path)
